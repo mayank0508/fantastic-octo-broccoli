@@ -15,7 +15,7 @@ function attackMonster(mode) {
     } else if (mode === 'STRONG_ATTACK') {
         attackValue = STRONG_ATTACK_VALUE;
     }
-    const damage = dealMonsterDamage(mode);
+    const damage = dealMonsterDamage(attackValue);
     currentMonsterHealth -= damage;
     const playerdamage = dealPlayerDamage(MONSTER_ATTACK_VALUE);
     currentPlayerHealth -= playerdamage;
