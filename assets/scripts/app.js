@@ -10,4 +10,4 @@ function attackHandler() {
     currentMonsterHealth -= damage;
 }
  
-attackBtn.addEventListener('click')
+attackBtn.addEventListener('click', attackHandler);
