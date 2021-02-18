@@ -1,6 +1,7 @@
 const ATTACK_VALUE = 10;
 const MONSTER_ATTACK_VALUE = 14;
 const STRONG_ATTACK_VALUE = 20;
+const HEAL_PLAYER = 5;
 
 let chooseMaxLife = 100;
 let currentMonsterHealth = chooseMaxLife;
@@ -36,6 +37,10 @@ function strongAttackHandler() {
     attackMonster('STRONG_ATTACK');
 }   
 
+function Healhandler() {
+    increasePlayerHealth(HEAL_PLAYER);
+}
 
 attackBtn.addEventListener('click', attackHandler);
 strongAttackBtn.addEventListener('click', strongAttackHandler);
+healBtn.addEventListener('click', Healhandler);
