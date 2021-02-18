@@ -6,12 +6,20 @@ const HEAL_PLAYER = 5;
 let chooseMaxLife = 100;
 let currentMonsterHealth = chooseMaxLife;
 let currentPlayerHealth = chooseMaxLife;
+let hasBonusLife = true;
 
 adjustHealthBars(chooseMaxLife);
 
 function endRound() {
+    const intialPlayerlife = currentPlayerHealth;
     const playerdamage = dealPlayerDamage(MONSTER_ATTACK_VALUE);
     currentPlayerHealth -= playerdamage;
+
+    if (currentPlayerHealth <=0 && hasBonusLife){
+        hasBonusLife = false;
+        removeBonusLife();
+        currentPlayerHealth = intialPlayerlife;
+    }
     if (currentMonsterHealth <= 0 && currentPlayerHealth > 0) {
         alert('You Won !');
     } else if (currentPlayerHealth <= 0 && currentMonsterHealth > 0) {
@@ -24,7 +32,7 @@ function endRound() {
 function attackMonster(mode) {
     let attackValue;
     if (mode === 'ATTACK') {
-        attackValue = ATTACK_VALUE; 
+        attackValue = ATTACK_VALUE;
     } else if (mode === 'STRONG_ATTACK') {
         attackValue = STRONG_ATTACK_VALUE;
     }
@@ -39,18 +47,18 @@ function attackHandler() {
 
 function strongAttackHandler() {
     attackMonster('STRONG_ATTACK');
-}   
+}
 
 function Healhandler() {
     let healValue;
-    if (currentPlayerHealth >= chooseMaxLife - HEAL_PLAYER){
+    if (currentPlayerHealth >= chooseMaxLife - HEAL_PLAYER) {
         alert('you cant heal to more than you max health.');
         healValue = chooseMaxLife - currentPlayerHealth
     } else {
         healValue = HEAL_PLAYER;
     }
     increasePlayerHealth(HEAL_PLAYER);
-    currentPlayerHealth += HEAL_PLAYER;
+    currentPlayerHealth += healValue;
     endRound();
 }
 
