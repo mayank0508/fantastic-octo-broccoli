@@ -40,13 +40,15 @@ function endRound() {
         alert('Match Drawn');
         //reset();
     }
+
+    if (currentMonsterHealth <= 0||            //thid method is for better code readibiltiy
+        currentPlayerHealth <= 0 )
+    {
+        reset();
+    }
 }
 
-if (currentMonsterHealth <= 0||            //thid method is for better code readibiltiy
-    currentPlayerHealth <= 0 )
-{
-    reset()
-}
+
 
 function attackMonster(mode) {
     let attackValue;
