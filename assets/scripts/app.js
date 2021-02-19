@@ -138,12 +138,19 @@ function attackMonster(mode) {
     let logEvent;
     if (mode === MODE_ATTACK) {
         attackValue = ATTACK_VALUE;
+        logEvent = LOG_EVENT_PLAYER_ATTACK;
     } else if (mode === MODE_STRONG_ATTACK) {
         attackValue = STRONG_ATTACK_VALUE;
         logEvent = LOG_EVENT_PLAYER_STRONG_ATTACK
     }
     const damage = dealMonsterDamage(attackValue);
     currentMonsterHealth -= damage;
+    writetoLOG(
+        logEvent,
+        damage,
+        currentMonsterHealth,
+        currentPlayerHealth
+    );
     endRound();
 }
 
@@ -181,4 +188,4 @@ function showLogHandler() {
 attackBtn.addEventListener('click', attackHandler);
 strongAttackBtn.addEventListener('click', strongAttackHandler);
 healBtn.addEventListener('click', Healhandler);
-logBtn.addEventListener('click', );
+logBtn.addEventListener('click', Healhandler);
