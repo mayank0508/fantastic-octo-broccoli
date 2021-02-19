@@ -12,6 +12,7 @@ const LOG_EVENT_PLAYER_HEAL = 'PLAYER_HEAL';
 const LOG_EVENT_GAME_OVER = 'GAME_OVER';
 
 const entertedvalue = prompt('Maximum life you give to your and the monster', '100');
+let battleLog = [];
 
 let chooseMaxLife = parseInt(entertedvalue);
 if (isNaN(chooseMaxLife) || chooseMaxLife <= 0) {
@@ -22,7 +23,7 @@ let currentMonsterHealth = chooseMaxLife;
 let currentPlayerHealth = chooseMaxLife;
 let hasBonusLife = true;
 
-function writetoLOG(ev, val, monsterHealth) {
+function writetoLOG(ev, val, monsterHealth, playerHealth) {
     let logEntry = {
         event: ev,
         value: val,
@@ -176,7 +177,7 @@ function Healhandler() {
         LOG_EVENT_PLAYER_HEAL,
         healValue,
         currentMonsterHealth,
-        currentPlayerHealth
+        currentPlayerHealth,
     );
     endRound();
 }
@@ -188,4 +189,4 @@ function showLogHandler() {
 attackBtn.addEventListener('click', attackHandler);
 strongAttackBtn.addEventListener('click', strongAttackHandler);
 healBtn.addEventListener('click', Healhandler);
-logBtn.addEventListener('click', Healhandler);
+logBtn.addEventListener('click', showLogHandler);
