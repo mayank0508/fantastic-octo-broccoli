@@ -10,6 +10,13 @@ let hasBonusLife = true;
 
 adjustHealthBars(chooseMaxLife);
 
+function reset() {
+    let currentMonsterHealth = chooseMaxLife;
+    let currentPlayerHealth = chooseMaxLife;
+    resetGame(chooseMaxLife);   //here we have give resetGame() choosieMax life cause i wanted it to reset ot the chossen max life
+}
+
+
 function endRound() {
     const intialPlayerlife = currentPlayerHealth;
     const playerdamage = dealPlayerDamage(MONSTER_ATTACK_VALUE);
@@ -25,11 +32,20 @@ function endRound() {
 
     if (currentMonsterHealth <= 0 && currentPlayerHealth > 0) {
         alert('You Won !');
+        //reset();
     } else if (currentPlayerHealth <= 0 && currentMonsterHealth > 0) {
         alert('You Lost !');
+        //reset();
     } else if (currentPlayerHealth <= 0 && currentMonsterHealth <= 0) {
         alert('Match Drawn');
+        //reset();
     }
+}
+
+if (currentMonsterHealth <= 0||            //thid method is for better code readibiltiy
+    currentPlayerHealth <= 0 )
+{
+    reset()
 }
 
 function attackMonster(mode) {
