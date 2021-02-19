@@ -9,7 +9,7 @@ const LOG_EVENT_PLAYER_ATTACK = 'PLAYER_ATTACK';
 const LOG_EVENT_PLAYER_STRONG_ATTACK = 'PLAYER_STRONG_ATTACK';
 const LOG_EVENT_PLAYER_MONSTER_ATTACK = 'MONSTER_ATTACK';
 const LOG_EVENT_PLAYER_HEAL = 'PLAYER_HEAL';
-const LOG_EVENT_PLAYER_ATTACK = 'GAME_OVER';
+const LOG_EVENT_GAME_OVER = 'GAME_OVER';
 
 const entertedvalue = prompt('Maximum life you give to your and the monster', '100');
 
@@ -22,8 +22,52 @@ let currentMonsterHealth = chooseMaxLife;
 let currentPlayerHealth = chooseMaxLife;
 let hasBonusLife = true;
 
-function writetoLOG() {
-    if ()
+function writetoLOG(ev, val, monsterHealth) {
+    let logEntry = {
+        event: ev,
+            value: val,
+            finalMonsterHealth: monsterHealth,
+            finalPlayerHealth: playerHealth,
+    };
+    if (ev === LOG_EVENT_PLAYER_ATTACK) {
+        logEntry.target = 'MONSTER';
+        //battleLog.push(logEntry);
+    } else if (ev === LOG_EVENT_PLAYER_STRONG_ATTACK) {
+        logEntry = {
+            event: ev,
+            value: val,
+            target: 'MONSTER',
+            finalMonsterHealth: monsterHealth,
+            finalPlayerHealth: playerHealth,
+        };
+        //battleLog.push(logEntry);
+    } else if (ev === LOG_EVENT_PLAYER_MONSTER_ATTACK) {
+        logEntry = {
+            event: ev,
+            value: val,
+            target: 'PLAYER',
+            finalMonsterHealth: monsterHealth,
+            finalPlayerHealth: playerHealth,
+        };
+        //battleLog.push(logEntry);
+    } else if (ev === LOG_EVENT_PLAYER_HEAL) {
+        logEntry = {
+            event: ev,
+            value: val,
+            target: 'PLAYER',
+            finalMonsterHealth: monsterHealth,
+            finalPlayerHealth: playerHealth,
+        };
+        //battleLog.push(logEntry);
+    } else if (ev === LOG_EVENT_GAME_OVER) {
+        logEntry = {
+            event: ev,
+            value: val,
+            finalMonsterHealth: monsterHealth,
+            finalPlayerHealth: playerHealth,
+        };
+    }
+    battleLog.push(logEntry); 
 }
 
 adjustHealthBars(chooseMaxLife);
@@ -99,6 +143,11 @@ function Healhandler() {
     endRound();
 }
 
+function showLogHandler() {
+    console.log(battleLog);
+}
+
 attackBtn.addEventListener('click', attackHandler);
 strongAttackBtn.addEventListener('click', strongAttackHandler);
 healBtn.addEventListener('click', Healhandler);
+logBtn.addEventListener('click', );
