@@ -3,8 +3,13 @@ const MONSTER_ATTACK_VALUE = 14;
 const STRONG_ATTACK_VALUE = 20;
 const HEAL_PLAYER = 5;
 
-const MODE_ATTACK = 'ATTACK'
-const MODE_STRONG_ATTACK = 'STRONG_ATTACK'
+const MODE_ATTACK = 'ATTACK';
+const MODE_STRONG_ATTACK = 'STRONG_ATTACK';
+const LOG_EVENT_PLAYER_ATTACK = 'PLAYER_ATTACK';
+const LOG_EVENT_PLAYER_STRONG_ATTACK = 'PLAYER_STRONG_ATTACK';
+const LOG_EVENT_PLAYER_MONSTER_ATTACK = 'MONSTER_ATTACK';
+const LOG_EVENT_PLAYER_HEAL = 'PLAYER_HEAL';
+const LOG_EVENT_PLAYER_ATTACK = 'GAME_OVER';
 
 const entertedvalue = prompt('Maximum life you give to your and the monster', '100');
 
@@ -16,6 +21,10 @@ if (isNaN(chooseMaxLife) || chooseMaxLife <=0){
 let currentMonsterHealth = chooseMaxLife;
 let currentPlayerHealth = chooseMaxLife;
 let hasBonusLife = true;
+
+function writetoLOG() {
+    if ()
+}
 
 adjustHealthBars(chooseMaxLife);
 
