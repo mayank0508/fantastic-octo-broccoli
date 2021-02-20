@@ -228,6 +228,12 @@ function Healhandler() {
 }
 
 function showLogHandler() {
+    for (let i=0; i < 3; i++){
+        console.log('-------')
+    }
+    for (let i=0; i<battleLog.length; i++){
+        console.log(battleLog[i]);
+    }
     console.log(battleLog);
 }
 
