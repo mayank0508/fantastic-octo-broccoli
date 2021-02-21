@@ -228,16 +228,26 @@ function Healhandler() {
 }
 
 function showLogHandler() {
-    for (let i=0; i < 3; i++){
+    // for (let i=0; i < 3; i++){
+    //     console.log('-------');
+    // }
+    int j = 0;
+    while (j < 3){
         console.log('-------');
+        j++
     }
+    let i =0;
     for (const logEntry of battleLog) {
-        console.log(battleLog);
+        console.log(`#${i}`);
+        for (const key in logEntry){
+            console.log(`${key} => ${logEntry[key]}`);
+        }
+        i++;
     }
     // for (let i=0; i<battleLog.length; i++){
     //     console.log(battleLog[i]);
     // }
-    console.log(battleLog);
+
 }
 
 attackBtn.addEventListener('click', attackHandler);
