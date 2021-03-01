@@ -19,13 +19,13 @@ function getMaxlifeValue() {
     const entertedvalue = prompt('Maximum life you give to your and the monster', '100');
 
 const parsedValue = parseInt(entertedvalue);
-if (isNaN(chooseMaxLife) || chooseMaxLife <= 0) {
+if (isNaN(parsedValue) || parsedValue <= 0) {
     throw {message: 'Invalid User input'};
 }
 return parsedValue;
 }
 
-let chooseMaxLife = getMaxlifeValue;
+let chooseMaxLife = getMaxlifeValue();
 
 let currentMonsterHealth = chooseMaxLife;
 let currentPlayerHealth = chooseMaxLife;
