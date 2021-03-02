@@ -16,7 +16,7 @@ let battleLog = [];
 let lastloggedEntry; 
 
 function getMaxlifeValue() {
-    const entertedvalue = prompt('Maximum life you give to your and the monster', '100');
+    const entertedvalue = prompt('Maximum life you give to your and the monster', '70');
 
 const parsedValue = parseInt(entertedvalue);
 if (isNaN(parsedValue) || parsedValue <= 0) {
@@ -25,7 +25,14 @@ if (isNaN(parsedValue) || parsedValue <= 0) {
 return parsedValue;
 }
 
-let chooseMaxLife = getMaxlifeValue();
+ try{
+    let chooseMaxLife = getMaxlifeValue();
+ } catch (error) {
+     console.log(error);
+     chooseMaxLife = 100;
+     alert("you entered the wrong value, but 100 was retredas a default value");
+ }
+
 
 let currentMonsterHealth = chooseMaxLife;
 let currentPlayerHealth = chooseMaxLife;
